@@ -3,6 +3,9 @@ items.spawn = {
 	{price = {}, offer = {type = 'nothing', effect_description = 'Deposit Fish'}},
 	{price = {}, offer = {type = 'nothing', effect_description = 'Withdraw Fish - 1% Bank Fee'}},
 	{price = {}, offer = {type = 'nothing', effect_description = 'Show Account Balance'}},
+
+	{price = {{"raw-fish", 150}}, offer = {type = 'give-item', item = 'burner-omnitractor'}},
+
 	{price = {{"raw-fish", 5}}, offer = {type = 'give-item', item = 'rail', count = 4}},
 	{price = {{"raw-fish", 5}}, offer = {type = 'give-item', item = 'rail-signal', count = 2}},
 	{price = {{"raw-fish", 5}}, offer = {type = 'give-item', item = 'rail-chain-signal', count = 2}},
@@ -22,18 +25,21 @@ items.spawn = {
 	{price = {{"raw-fish", 2}}, offer = {type = 'give-item', item = 'land-mine'}},
 	{price = {{"raw-fish", 1}}, offer = {type = 'give-item', item = 'explosives', count = 2}},	
 	{price = {{"raw-fish", 40}}, offer = {type = 'give-item', item = 'cliff-explosives'}},
+	
 	{price = {{"raw-fish", 5}}, offer = {type = 'give-item', item = 'raw-wood', count = 25}},
-	{price = {{"raw-fish", 5}}, offer = {type = 'give-item', item = 'iron-ore', count = 25}},
-	{price = {{"raw-fish", 5}}, offer = {type = 'give-item', item = 'copper-ore', count = 25}},
+	-- {price = {{"raw-fish", 5}}, offer = {type = 'give-item', item = 'iron-ore', count = 25}},
+	-- {price = {{"raw-fish", 5}}, offer = {type = 'give-item', item = 'copper-ore', count = 25}},
 	{price = {{"raw-fish", 5}}, offer = {type = 'give-item', item = 'stone', count = 25}},
-	{price = {{"raw-fish", 5}}, offer = {type = 'give-item', item = 'coal', count = 25}},	
-	{price = {{"raw-fish", 5}}, offer = {type = 'give-item', item = 'uranium-ore', count = 20}},
-	{price = {{'raw-wood', 25}}, offer = {type = 'give-item', item = "raw-fish", count = 2}},	
-	{price = {{'iron-ore', 25}}, offer = {type = 'give-item', item = "raw-fish", count = 2}},
-	{price = {{'copper-ore', 25}}, offer = {type = 'give-item', item = "raw-fish", count = 2}},
+	-- {price = {{"raw-fish", 5}}, offer = {type = 'give-item', item = 'coal', count = 25}},	
+	-- {price = {{"raw-fish", 5}}, offer = {type = 'give-item', item = 'uranium-ore', count = 20}},
+	{price = {{"raw-fish", 5}}, offer = {type = 'give-item', item = 'omnite', count = 25}},
+
+	{price = {{'raw-wood', 25}}, offer = {type = 'give-item', item = "raw-fish", count = 2}},
+	-- {price = {{'iron-ore', 25}}, offer = {type = 'give-item', item = "raw-fish", count = 2}},
+	-- {price = {{'copper-ore', 25}}, offer = {type = 'give-item', item = "raw-fish", count = 2}},
 	{price = {{'stone', 25}}, offer = {type = 'give-item', item = "raw-fish", count = 2}},
-	{price = {{'coal', 25}}, offer = {type = 'give-item', item = "raw-fish", count = 2}},	
-	{price = {{'uranium-ore', 20}}, offer = {type = 'give-item', item = "raw-fish", count = 2}},
-	{price = {{'omnite', 25}}, offer = {type = 'give-item', item = "raw-fish", count = 2}},	
+	-- {price = {{'coal', 25}}, offer = {type = 'give-item', item = "raw-fish", count = 2}},	
+	-- {price = {{'uranium-ore', 20}}, offer = {type = 'give-item', item = "raw-fish", count = 2}},
+	{price = {{'omnite', 25}}, offer = {type = 'give-item', item = "raw-fish", count = 2}},
 }
 return items

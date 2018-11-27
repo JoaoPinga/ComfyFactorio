@@ -887,10 +887,11 @@ Darkness is a hazard in the mines, stay near your lamps..
 		global.total_ores_mined = 0
 		
 		global.rock_mining_chance_weights = {}
-		global.rock_mining_chance_weights[1] = {"iron-ore",25}
-		global.rock_mining_chance_weights[2] = {"copper-ore",18}
-		global.rock_mining_chance_weights[3] = {"coal",14}
-		global.rock_mining_chance_weights[4] = {"uranium-ore",3}
+		global.rock_mining_chance_weights[1] = {"omnite",1}
+		-- global.rock_mining_chance_weights[1] = {"iron-ore",25}
+		-- global.rock_mining_chance_weights[2] = {"copper-ore",18}
+		-- global.rock_mining_chance_weights[3] = {"coal",14}
+		-- global.rock_mining_chance_weights[4] = {"uranium-ore",3}
 		global.rock_mining_raffle_table = {}				
 		for _, t in pairs (global.rock_mining_chance_weights) do
 			for x = 1, t[2], 1 do
@@ -1153,9 +1154,10 @@ local function pre_player_mined_item(event)
 		local amount = (math.random(45,55) + bonus_amount)*(1+game.forces.player.mining_drill_productivity_bonus)
 		
 		amount = math.round(amount, 0)
-		amount_of_stone = math.round(amount * 0.15,0)		
+		-- amount_of_stone = math.round(amount * 0.15,0)
 		
-		global.stats_ores_found = global.stats_ores_found + amount + amount_of_stone
+		-- global.stats_ores_found = global.stats_ores_found + amount + amount_of_stone
+		global.stats_ores_found = global.stats_ores_found + amount
 		
 		local mined_loot = global.rock_mining_raffle_table[math.random(1,#global.rock_mining_raffle_table)]
 		if amount > global.ore_spill_cap then
@@ -1170,17 +1172,17 @@ local function pre_player_mined_item(event)
 			surface.spill_item_stack(rock_position,{name = mined_loot, count = amount},true)
 		end
 		
-		if amount_of_stone > global.ore_spill_cap then
-			surface.spill_item_stack(rock_position,{name = "stone", count = global.ore_spill_cap},true)
-			amount_of_stone = amount_of_stone - global.ore_spill_cap
-			local i = player.insert {name = "stone", count = amount_of_stone}
-			amount_of_stone = amount_of_stone - i
-			if amount_of_stone > 0 then
-				surface.spill_item_stack(rock_position,{name = "stone", count = amount_of_stone},true)
-			end
-		else
-			surface.spill_item_stack(rock_position,{name = "stone", count = amount_of_stone},true)
-		end
+		-- if amount_of_stone > global.ore_spill_cap then
+		-- 	surface.spill_item_stack(rock_position,{name = "stone", count = global.ore_spill_cap},true)
+		-- 	amount_of_stone = amount_of_stone - global.ore_spill_cap
+		-- 	local i = player.insert {name = "stone", count = amount_of_stone}
+		-- 	amount_of_stone = amount_of_stone - i
+		-- 	if amount_of_stone > 0 then
+		-- 		surface.spill_item_stack(rock_position,{name = "stone", count = amount_of_stone},true)
+		-- 	end
+		-- else
+		-- 	surface.spill_item_stack(rock_position,{name = "stone", count = amount_of_stone},true)
+		-- end
 		
 		global.stats_rocks_broken = global.stats_rocks_broken + 1		
 		refresh_gui()
