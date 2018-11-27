@@ -23,6 +23,7 @@ require "score"
 --require "maps.crossing"
 require "maps.spooky_forest"
 --require "maps.empty_map"
+require "maps.modded_cave_miner"
 -----------------------------
 
 local Event = require 'utils.event'
