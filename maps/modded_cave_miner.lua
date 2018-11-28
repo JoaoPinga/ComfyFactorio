@@ -22,6 +22,10 @@ local darkness_messages = {
 		"You feel like, something is watching you...",		
 		}
 
+local deep_darkness_messages = {
+		"You start feeling weak, your health being drained away by an unknown force.",
+}
+
 local rock_inhabitants = {
 		[1] = {"small-biter"},
 		[2] = {"small-biter","small-biter","small-biter","small-biter","small-biter","medium-biter"},
@@ -832,6 +836,11 @@ end
 
 local function darkness_events()
 	for _, p in pairs (game.connected_players) do		
+		-- Stop spawning biters when already dead
+		if not p.character then
+			return
+		end
+		
 		if global.darkness_threat_level[p.name] > 4 then						
 			for x = 1, 2 + global.darkness_threat_level[p.name], 1 do
 				spawn_cave_inhabitant(p.position)	
@@ -842,9 +851,24 @@ local function darkness_events()
 			end
 			p.character.damage(math.random(global.darkness_threat_level[p.name]*2,global.darkness_threat_level[p.name]*3),"enemy")
 		end		
+		
+		-- Damages and kills the player after some time, so the darkness can't be ignored with overpowered armor
+		if global.darkness_threat_level[p.name] > 8 then
+			p.character.health = p.character.health - 100
+		end
+		if global.darkness_threat_level[p.name] > 10 then
+			p.character.die("player")
+			local t = {" was consumed by darkness.", " was driven mad by the abyss.", " should have stayed in the light."}
+			game.print(p.name .. t[math.random(1,#t)], { r=0.75, g=0.0, b=0.0})
+		end
+		
 		if global.darkness_threat_level[p.name] == 2 then
 			p.print(darkness_messages[math.random(1,#darkness_messages)],{ r=0.65, g=0.0, b=0.0})				
 		end
+		if global.darkness_threat_level[p.name] == 8 then
+			p.print(deep_darkness_messages[math.random(1,#deep_darkness_messages)],{ r=0.65, g=0.0, b=0.0})				
+		end
+
 		global.darkness_threat_level[p.name] = global.darkness_threat_level[p.name] + 1
 	end
 end
@@ -1080,7 +1104,11 @@ local function on_player_mined_entity(event)
 	end	
 end
 
-local function on_entity_damaged(event)	
+local function on_entity_damaged(event)
+	if not event.entity.valid then
+		return
+	end
+	
 	if event.entity.name == "rock-huge" or event.entity.name == "rock-big" or event.entity.name == "sand-rock-big" then
 		local rock_is_alive = true
 		if event.force.name == "enemy" then 

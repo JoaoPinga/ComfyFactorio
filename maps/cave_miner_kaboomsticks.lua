@@ -56,7 +56,10 @@ local function process_explosion_tile(pos, explosion_index, current_radius)
 	end	
 	
 	for _, entity in pairs(target_entities) do
-		if entity.health then						
+		-- Kill players, otherwise the damage below will obliterate all armor durability
+		if entity.name == "player" then
+			entity.die("player")
+		elseif entity.health then
 			if entity.health < global.explosion_schedule[explosion_index].damage_remaining then
 				explosion_animation = "big-explosion"
 				if entity.health > 500 then explosion_animation = "big-artillery-explosion" end
