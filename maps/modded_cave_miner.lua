@@ -30,36 +30,185 @@ local rock_inhabitants = {
 		[1] = {"small-biter"},
 		[2] = {"small-biter","small-biter","small-biter","small-biter","small-biter","medium-biter"},
 		[3] = {"small-biter","small-biter","small-biter","small-biter","medium-biter","medium-biter"},
-		[4] = {"small-biter","small-biter","small-biter","medium-biter","medium-biter","small-spitter"},
-		[5] = {"small-biter","small-biter","medium-biter","medium-biter","medium-biter","small-spitter"},
-		[6] = {"small-biter","small-biter","medium-biter","medium-biter","big-biter","small-spitter"},
-		[7] = {"small-biter","small-biter","medium-biter","medium-biter","big-biter","medium-spitter"},
-		[8] = {"small-biter","medium-biter","medium-biter","medium-biter","big-biter","medium-spitter"},
-		[9] = {"small-biter","medium-biter","medium-biter","big-biter","big-biter","medium-spitter"},
-		[10] = {"medium-biter","medium-biter","medium-biter","big-biter","big-biter","big-spitter"},
-		[11] = {"medium-biter","medium-biter","big-biter","big-biter","big-biter","big-spitter"},
-		[12] = {"medium-biter","big-biter","big-biter","big-biter","big-biter","big-spitter"},
-		[13] = {"big-biter","big-biter","big-biter","big-biter","big-biter","big-spitter"},
-		[14] = {"big-biter","big-biter","big-biter","big-biter","behemoth-biter","big-spitter"},
-		[15] = {"big-biter","big-biter","big-biter","behemoth-biter","behemoth-biter","big-spitter"},
-		[16] = {"big-biter","big-biter","big-biter","behemoth-biter","behemoth-biter","behemoth-spitter"},
-		[17] = {"big-biter","big-biter","behemoth-biter","behemoth-biter","behemoth-biter","behemoth-spitter"},
-		[18] = {"big-biter","behemoth-biter","behemoth-biter","behemoth-biter","behemoth-biter","behemoth-spitter"},
-		[19] = {"behemoth-biter","behemoth-biter","behemoth-biter","behemoth-biter","behemoth-biter","behemoth-spitter"},
-		[20] = {"behemoth-biter","behemoth-biter","behemoth-biter","behemoth-biter","behemoth-spitter","behemoth-spitter"}
-	}		
+		[4] = {"small-biter","small-biter","small-biter","medium-biter","medium-biter",
+			   "small-spitter"},
+		[5] = {"small-biter","small-biter","medium-biter","medium-biter","medium-biter",
+			   "small-spitter"},
+		[6] = {"small-biter","small-biter","medium-biter","medium-biter","big-biter",
+			   "small-spitter"},
+		[7] = {"small-biter","small-biter","medium-biter","medium-biter","big-biter",
+			   "medium-spitter"},
+		[8] = {"small-biter","medium-biter","medium-biter","big-biter",
+			   "bob-big-piercing-biter",
+			   "medium-spitter"},
+		[9] = {"medium-biter","medium-biter","medium-biter","big-biter","big-biter","big-biter",
+			   "bob-big-piercing-biter","bob-big-piercing-biter",
+			   "medium-spitter","big-spitter"},
+		[10] = {"medium-biter","big-biter","big-biter",
+				"bob-big-piercing-biter","bob-big-piercing-biter",
+				"big-spitter"},
+		[11] = {"medium-biter","big-biter","big-biter","big-biter",
+				"bob-big-piercing-biter","bob-big-piercing-biter","bob-big-piercing-biter","bob-huge-acid-biter",
+				"big-spitter",
+				"bob-big-electric-spitter"},
+		[12] = {"medium-biter","big-biter","big-biter","big-biter",
+				"bob-big-piercing-biter","bob-big-piercing-biter","bob-big-piercing-biter",
+				"bob-huge-acid-biter","bob-huge-acid-biter","bob-huge-explosive-biter",
+				"big-spitter",
+				"bob-big-electric-spitter"},
+		[13] = {"big-biter","big-biter","big-biter",
+				"bob-big-piercing-biter","bob-big-piercing-biter","bob-big-piercing-biter",
+				"bob-huge-acid-biter","bob-huge-acid-biter","bob-huge-acid-biter",
+				"bob-huge-explosive-biter","bob-huge-explosive-biter",
+				"big-spitter",
+				"bob-big-electric-spitter","bob-huge-explosive-spitter"},
+		[14] = {"big-biter","big-biter",
+				"bob-big-piercing-biter","bob-big-piercing-biter",
+				"bob-huge-acid-biter","bob-huge-acid-biter","bob-huge-acid-biter","bob-huge-acid-biter",
+				"bob-huge-explosive-biter","bob-huge-explosive-biter","bob-huge-explosive-biter",
+				"bob-giant-poison-biter",
+				"big-spitter",
+				"bob-big-electric-spitter","bob-huge-explosive-spitter","bob-huge-acid-spitter"},
+		[15] = {"big-biter",
+				"bob-big-piercing-biter","bob-big-piercing-biter",
+				"bob-huge-acid-biter","bob-huge-acid-biter","bob-huge-acid-biter",
+				"bob-huge-explosive-biter","bob-huge-explosive-biter","bob-huge-explosive-biter","bob-huge-explosive-biter",
+				"bob-giant-poison-biter","bob-giant-poison-biter","bob-giant-fire-biter",
+				"big-spitter",
+				"bob-big-electric-spitter","bob-huge-explosive-spitter","bob-huge-acid-spitter"},
+		[16] = {"big-biter","behemoth-biter",
+				"bob-big-piercing-biter",
+				"bob-huge-acid-biter","bob-huge-acid-biter","bob-huge-acid-biter",
+				"bob-huge-explosive-biter","bob-huge-explosive-biter","bob-huge-explosive-biter",
+				"bob-giant-poison-biter","bob-giant-poison-biter","bob-giant-fire-biter","bob-giant-fire-biter",
+				"bob-big-electric-spitter","bob-huge-explosive-spitter","bob-huge-acid-spitter","bob-giant-fire-spitter"},
+		[17] = {"behemoth-biter","behemoth-biter",
+				"bob-big-piercing-biter",
+				"bob-huge-acid-biter","bob-huge-acid-biter",
+				"bob-huge-explosive-biter","bob-huge-explosive-biter","bob-huge-explosive-biter",
+				"bob-giant-poison-biter","bob-giant-poison-biter","bob-giant-poison-biter","bob-giant-poison-biter",
+				"bob-giant-fire-biter","bob-giant-fire-biter","bob-giant-fire-biter",
+				"bob-huge-explosive-spitter","bob-huge-acid-spitter","bob-giant-fire-spitter","bob-giant-poison-spitter"},
+		[18] = {"behemoth-biter","behemoth-biter","behemoth-biter","behemoth-biter",
+				"bob-huge-acid-biter","bob-huge-acid-biter","bob-huge-explosive-biter","bob-huge-explosive-biter",
+				"bob-giant-poison-biter","bob-giant-poison-biter","bob-giant-poison-biter","bob-giant-poison-biter",
+				"bob-giant-fire-biter","bob-giant-fire-biter","bob-giant-fire-biter","bob-giant-fire-biter",
+				"bob-titan-biter",
+				"bob-huge-explosive-spitter","bob-huge-acid-spitter","bob-giant-fire-spitter","bob-giant-poison-spitter"},
+		[19] = {"behemoth-biter","behemoth-biter","behemoth-biter","behemoth-biter",
+				"bob-huge-acid-biter","bob-huge-explosive-biter",
+				"bob-giant-poison-biter","bob-giant-poison-biter","bob-giant-poison-biter",
+				"bob-giant-fire-biter","bob-giant-fire-biter","bob-giant-fire-biter",
+				"bob-titan-biter","bob-titan-biter",
+				"behemoth-spitter",
+				"bob-huge-acid-spitter","bob-giant-fire-spitter","bob-giant-poison-spitter"},
+		[20] = {"behemoth-biter","behemoth-biter","behemoth-biter","behemoth-biter",
+				"bob-huge-acid-biter","bob-huge-explosive-biter",
+				"bob-giant-poison-biter","bob-giant-poison-biter","bob-giant-fire-biter","bob-giant-fire-biter",
+				"bob-titan-biter","bob-titan-biter","bob-titan-biter","bob-behemoth-biter",
+				"behemoth-spitter",
+				"bob-huge-acid-spitter","bob-giant-fire-spitter","bob-giant-poison-spitter"},
+		[21] = {"behemoth-biter","behemoth-biter","behemoth-biter",
+				"bob-huge-acid-biter","bob-huge-explosive-biter",
+				"bob-giant-poison-biter","bob-giant-poison-biter","bob-giant-fire-biter","bob-giant-fire-biter",
+				"bob-titan-biter","bob-titan-biter","bob-titan-biter","bob-titan-biter",
+				"bob-behemoth-biter","bob-behemoth-biter",
+				"behemoth-spitter",
+				"bob-giant-fire-spitter","bob-giant-poison-spitter","bob-titan-spitter"},
+		[22] = {"behemoth-biter","behemoth-biter","behemoth-biter",
+				"bob-huge-explosive-biter",
+				"bob-giant-poison-biter","bob-giant-poison-biter","bob-giant-fire-biter","bob-giant-fire-biter",
+				"bob-titan-biter","bob-titan-biter","bob-titan-biter","bob-titan-biter","bob-titan-biter",
+				"bob-behemoth-biter","bob-behemoth-biter","bob-behemoth-biter","bob-behemoth-biter",
+				"behemoth-spitter",
+				"bob-giant-fire-spitter","bob-giant-poison-spitter","bob-titan-spitter"},
+		[23] = {"behemoth-biter","behemoth-biter",
+				"bob-giant-poison-biter","bob-giant-fire-biter",
+				"bob-titan-biter","bob-titan-biter","bob-titan-biter","bob-titan-biter","bob-titan-biter",
+				"bob-behemoth-biter","bob-behemoth-biter","bob-behemoth-biter","bob-behemoth-biter","bob-behemoth-biter",
+				"behemoth-spitter",
+				"bob-giant-poison-spitter","bob-titan-spitter","bob-behemoth-spitter"},
+		[24] = {"behemoth-biter",
+				"bob-giant-fire-biter",
+				"bob-titan-biter","bob-titan-biter","bob-titan-biter","bob-titan-biter",
+				"bob-behemoth-biter","bob-behemoth-biter","bob-behemoth-biter","bob-behemoth-biter",
+				"behemoth-spitter",
+				"bob-titan-spitter","bob-behemoth-spitter"},
+		[25] = {"behemoth-biter",
+				"bob-giant-fire-biter",
+				"bob-titan-biter","bob-titan-biter","bob-titan-biter","bob-titan-biter","bob-titan-biter",
+				"bob-behemoth-biter","bob-behemoth-biter","bob-behemoth-biter","bob-behemoth-biter","bob-behemoth-biter",
+				"bob-leviathan-biter",
+				"behemoth-spitter",
+				"bob-titan-spitter","bob-behemoth-spitter"},
+		[26] = {"behemoth-biter",
+				"bob-titan-biter","bob-titan-biter","bob-titan-biter","bob-titan-biter",
+				"bob-behemoth-biter","bob-behemoth-biter","bob-behemoth-biter","bob-behemoth-biter",
+				"bob-leviathan-biter",
+				"bob-titan-spitter","bob-titan-spitter","bob-behemoth-spitter"},
+		[27] = {"behemoth-biter",
+				"bob-titan-biter","bob-titan-biter","bob-titan-biter",
+				"bob-behemoth-biter","bob-behemoth-biter","bob-behemoth-biter","bob-behemoth-biter",
+				"bob-leviathan-biter","bob-leviathan-biter",
+				"bob-titan-spitter","bob-behemoth-spitter","bob-leviathan-spitter"},
+		[28] = {"bob-titan-biter","bob-titan-biter",
+				"bob-behemoth-biter","bob-behemoth-biter","bob-behemoth-biter","bob-behemoth-biter",
+				"bob-leviathan-biter","bob-leviathan-biter",
+				"bob-behemoth-spitter","bob-leviathan-spitter"},
+		[29] = {"bob-titan-biter","bob-titan-biter",
+				"bob-behemoth-biter","bob-behemoth-biter","bob-behemoth-biter","bob-behemoth-biter","bob-behemoth-biter",
+				"bob-leviathan-biter","bob-leviathan-biter","bob-leviathan-biter",
+				"bob-behemoth-spitter","bob-leviathan-spitter"},
+		[30] = {"bob-behemoth-biter","bob-behemoth-biter","bob-behemoth-biter","bob-behemoth-biter",
+				"bob-leviathan-biter","bob-leviathan-biter",
+				"bob-behemoth-spitter","bob-leviathan-spitter"},
+	}
 
 local worm_raffle_table = {
 		[1] = {"small-worm-turret", "small-worm-turret", "small-worm-turret", "small-worm-turret", "small-worm-turret", "small-worm-turret"},
 		[2] = {"small-worm-turret", "small-worm-turret", "small-worm-turret", "small-worm-turret", "small-worm-turret", "medium-worm-turret"},
 		[3] = {"small-worm-turret", "small-worm-turret", "small-worm-turret", "small-worm-turret", "medium-worm-turret", "medium-worm-turret"},
-		[4] = {"small-worm-turret", "small-worm-turret", "small-worm-turret", "medium-worm-turret", "medium-worm-turret", "medium-worm-turret"},
-		[5] = {"small-worm-turret", "small-worm-turret", "medium-worm-turret", "medium-worm-turret", "medium-worm-turret", "big-worm-turret"},
-		[6] = {"small-worm-turret", "medium-worm-turret", "medium-worm-turret", "medium-worm-turret", "medium-worm-turret", "big-worm-turret"},
-		[7] = {"medium-worm-turret", "medium-worm-turret", "medium-worm-turret", "medium-worm-turret", "big-worm-turret", "big-worm-turret"},
-		[8] = {"medium-worm-turret", "medium-worm-turret", "medium-worm-turret", "medium-worm-turret", "big-worm-turret", "big-worm-turret"},
-		[9] = {"medium-worm-turret", "medium-worm-turret", "medium-worm-turret", "big-worm-turret", "big-worm-turret", "big-worm-turret"},
-		[10] = {"medium-worm-turret", "medium-worm-turret", "medium-worm-turret", "big-worm-turret", "big-worm-turret", "big-worm-turret"}
+		[4] = {"small-worm-turret", "small-worm-turret", "small-worm-turret", "medium-worm-turret", "medium-worm-turret", "medium-worm-turret",
+			   "bob-big-explosive-worm-turret"},
+		[5] = {"small-worm-turret", "medium-worm-turret", "medium-worm-turret", "medium-worm-turret", "big-worm-turret",
+			   "bob-big-explosive-worm-turret","bob-big-fire-worm-turret"},
+		[6] = {"medium-worm-turret", "medium-worm-turret", "medium-worm-turret", "medium-worm-turret", "big-worm-turret",
+			   "bob-big-explosive-worm-turret","bob-big-fire-worm-turret","bob-big-poison-worm-turret",
+			   "bob-big-piercing-worm-turret","bob-big-electric-worm-turret"},
+		[7] = {"medium-worm-turret", "medium-worm-turret", "medium-worm-turret", "medium-worm-turret", "big-worm-turret", "big-worm-turret",
+			   "bob-big-explosive-worm-turret","bob-big-fire-worm-turret","bob-big-poison-worm-turret",
+			   "bob-big-piercing-worm-turret","bob-big-electric-worm-turret"},
+		[8] = {"medium-worm-turret", "medium-worm-turret", "medium-worm-turret", "big-worm-turret", "big-worm-turret",
+			   "bob-big-explosive-worm-turret","bob-big-fire-worm-turret","bob-big-poison-worm-turret",
+			   "bob-big-piercing-worm-turret","bob-big-electric-worm-turret"},
+		[9] = {"medium-worm-turret", "medium-worm-turret", "big-worm-turret", "big-worm-turret", "big-worm-turret",
+			   "bob-big-explosive-worm-turret","bob-big-fire-worm-turret","bob-big-poison-worm-turret",
+			   "bob-big-piercing-worm-turret","bob-big-electric-worm-turret",
+			   "bob-giant-worm-turret"},
+		[10] = {"medium-worm-turret", "big-worm-turret", "big-worm-turret", "big-worm-turret",
+				"bob-big-explosive-worm-turret","bob-big-fire-worm-turret","bob-big-poison-worm-turret",
+				"bob-big-piercing-worm-turret","bob-big-electric-worm-turret",
+				"bob-giant-worm-turret"},
+		[11] = {"big-worm-turret", "big-worm-turret", "big-worm-turret",
+				"bob-big-explosive-worm-turret","bob-big-fire-worm-turret","bob-big-poison-worm-turret",
+				"bob-big-piercing-worm-turret","bob-big-electric-worm-turret",
+				"bob-giant-worm-turret","bob-giant-worm-turret"},
+		[12] = {"big-worm-turret", "big-worm-turret", "big-worm-turret",
+				"bob-big-explosive-worm-turret","bob-big-fire-worm-turret","bob-big-poison-worm-turret",
+				"bob-big-piercing-worm-turret","bob-big-electric-worm-turret",
+				"bob-giant-worm-turret","bob-giant-worm-turret","bob-giant-worm-turret"},
+		[13] = {"big-worm-turret", "big-worm-turret", "big-worm-turret",
+				"bob-big-explosive-worm-turret","bob-big-fire-worm-turret","bob-big-poison-worm-turret",
+				"bob-big-piercing-worm-turret","bob-big-electric-worm-turret",
+				"bob-giant-worm-turret","bob-giant-worm-turret","bob-giant-worm-turret",
+				"bob-behemoth-worm-turret"},
+		[14] = {"big-worm-turret", "big-worm-turret", "big-worm-turret",
+				"bob-giant-worm-turret","bob-giant-worm-turret","bob-giant-worm-turret","bob-giant-worm-turret",
+				"bob-behemoth-worm-turret","bob-behemoth-worm-turret"},
+		[15] = {"big-worm-turret",
+				"bob-giant-worm-turret","bob-giant-worm-turret","bob-giant-worm-turret","bob-giant-worm-turret",
+				"bob-behemoth-worm-turret","bob-behemoth-worm-turret","bob-behemoth-worm-turret"},
+		[16] = {"bob-giant-worm-turret","bob-behemoth-worm-turret"},
 	}
 
 local player_hunger_fish_food_value = 10
@@ -531,11 +680,22 @@ local function on_chunk_generated(event)
 	for _, p in pairs(enemy_building_positions) do	
 		if math.random(1,50)==1 then
 			local pos = surface.find_non_colliding_position("biter-spawner", p, 8, 1)
+
 			if pos then
+				local tile_distance_to_center = math.sqrt(pos.x^2 + pos.y^2)
+
+				local biter_spawner = "biter-spawner"
+				local spitter_spawner = "spitter-spawner"
+
+				if tile_distance_to_center > 1000 then
+					biter_spawner = "bob-biter-spawner"
+					spitter_spawner = "bob-spitter-spawner"
+				end
+
 				if math.random(1,3) == 1 then
-					surface.create_entity {name="spitter-spawner",position=pos}
+					surface.create_entity {name=biter_spawner,position=pos}
 				else
-					surface.create_entity {name="biter-spawner",position=pos}
+					surface.create_entity {name=spitter_spawner,position=pos}
 				end
 			end			
 		end
@@ -547,7 +707,7 @@ local function on_chunk_generated(event)
 			if tile_distance_to_center > global.worm_free_zone_radius then						
 				local raffle_index = math.ceil((tile_distance_to_center-global.worm_free_zone_radius)*0.01, 0)
 				if raffle_index < 1 then raffle_index = 1 end
-				if raffle_index > 10 then raffle_index = 10 end					
+				if raffle_index > 10 then raffle_index = #worm_raffle_table end
 				local entity_name = worm_raffle_table[raffle_index][math.random(1,#worm_raffle_table[raffle_index])]												
 				surface.create_entity {name=entity_name, position=p}
 			end
@@ -560,7 +720,7 @@ local function on_chunk_generated(event)
 			if tile_distance_to_center > global.worm_free_zone_radius then						
 				local raffle_index = math.ceil((tile_distance_to_center-global.worm_free_zone_radius)*0.01, 0)
 				if raffle_index < 1 then raffle_index = 1 end
-				if raffle_index > 10 then raffle_index = 10 end					
+				if raffle_index > 10 then raffle_index = #worm_raffle_table end
 				local entity_name = worm_raffle_table[raffle_index][math.random(1,#worm_raffle_table[raffle_index])]												
 				if surface.can_place_entity({name=entity_name, position=p}) then surface.create_entity {name=entity_name, position=p} end
 			end
@@ -763,7 +923,7 @@ local function spawn_cave_inhabitant(pos, target_position)
 	local tile_distance_to_center = math.sqrt(pos.x^2 + pos.y^2)			
 	local rock_inhabitants_index = math.ceil((tile_distance_to_center-math.sqrt(global.spawn_dome_size))*0.015, 0)
 	if rock_inhabitants_index < 1 then rock_inhabitants_index = 1 end
-	if rock_inhabitants_index > 20 then rock_inhabitants_index = 20 end					
+	if rock_inhabitants_index > #rock_inhabitants then rock_inhabitants_index = #rock_inhabitants end					
 	local entity_name = rock_inhabitants[rock_inhabitants_index][math.random(1,#rock_inhabitants[rock_inhabitants_index])]
 	local p = surface.find_non_colliding_position(entity_name , pos, 6, 0.5)
 	local biter = 1
@@ -858,7 +1018,7 @@ local function darkness_events()
 		end
 		if global.darkness_threat_level[p.name] > 10 then
 			p.character.die("player")
-			local t = {" was consumed by darkness.", " was driven mad by the abyss.", " should have stayed in the light."}
+			local t = {" was consumed by darkness.", " was driven mad by the abyss.", " should have gone towards the light."}
 			game.print(p.name .. t[math.random(1,#t)], { r=0.75, g=0.0, b=0.0})
 		end
 		
@@ -1056,7 +1216,7 @@ local function pre_player_mined_item(event)
 					local size = size_raffle[math.random(1,#size_raffle)]
 
 					-- local ore_prints = {coal = {"dark", "Coal"}, ["iron-ore"] = {"shiny", "Iron"}, ["copper-ore"] = {"glimmering", "Copper"}, ["uranium-ore"] = {"glowing", "Uranium"}}
-					local ore_prints = {omnite = {"", "Omnite"}}
+					local ore_prints = {omnite = {"precious", "Omnite"}}
 
 					player.print("You notice something " .. ore_prints[mined_loot][1] .. " underneath the rubble covered floor. It´s a " .. size[1] .. " vein of " ..  ore_prints[mined_loot][2] .. "!!", { r=0.98, g=0.66, b=0.22})
 					tile_distance_to_center = math.sqrt(tile_distance_to_center)
@@ -1195,7 +1355,6 @@ local function on_player_used_capsule(event)
 end
 
 local bank_messages = {
-	"Thank you for using our Fishbank terminal!",
 	"Caves are dangerous. Did you hear about our insurance programs?",
 	"Get your wealth flowing today with Fishbank!",
 	"Hungry? Take a look at our credit offers! No questions asked.",
