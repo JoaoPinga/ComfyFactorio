@@ -392,14 +392,16 @@ local function treasure_chest(position, distance_to_center)
 	-- local math_random = math.random
 	local chest_raffle = {}
 	local chest_loot = treasure.get_chest_loot()
+
+	local max_depth = 2075
+	local spawn_dome_distance = math.sqrt(global.spawn_dome_size)
+	distance_to_center = math.sqrt(distance_to_center)
+
+	distance_to_center = (distance_to_center - spawn_dome_distance) / (max_depth - spawn_dome_distance)
 	
-	distance_to_center = distance_to_center - global.spawn_dome_size
-	if distance_to_center < 1 then
-		distance_to_center = 0.1
-	else
-		distance_to_center = math.sqrt(distance_to_center) / 1250
-	end
+	if distance_to_center < 0.1 then distance_to_center = 0.1	end
 	if distance_to_center > 1 then distance_to_center = 1 end
+
 	for _, t in pairs (chest_loot) do
 		for x = 1, t.weight, 1 do
 			if t.evolution_min <= distance_to_center and t.evolution_max >= distance_to_center then
@@ -409,8 +411,11 @@ local function treasure_chest(position, distance_to_center)
 	end
 	--game.print(distance_to_center)
 	local n = "wooden-chest"
-	if distance_to_center > 750 then n = "iron-chest" end
-	if distance_to_center > 1250 then n = "steel-chest" end
+	if distance_to_center > 0.2 then n = "iron-chest" end
+	if distance_to_center > 0.4 then n = "steel-chest" end
+	if distance_to_center > 0.6 then n = "brass-chest" end
+	if distance_to_center > 0.8 then n = "titanium-chest" end	
+
 	local e = game.surfaces[1].create_entity({name=n, position=position, force="player"})	
 	e.minable = false
 	local i = e.get_inventory(defines.inventory.chest)
@@ -432,8 +437,12 @@ function rare_treasure_chest(position)
 			table.insert(rare_treasure_chest_raffle_table, t[1])
 		end			
 	end
+
+	local distance_to_center = math.sqrt(position[1]^2 + position[2]^2)
+	local n = "steel-chest"
+	if distance_to_center > 1000 then n = "titanium-chest" end
 	
-	local e = game.surfaces[1].create_entity {name="steel-chest",position=p, force="player"}
+	local e = game.surfaces[1].create_entity {name=n,position=p, force="player"}
 	e.minable = false
 	local i = e.get_inventory(defines.inventory.chest)
 	for x = 1, math.random(2,3), 1 do
@@ -445,6 +454,9 @@ end
 local function secret_shop(pos)
 	local secret_market_items = market_items.get_secret_items()
 	secret_market_items = shuffle(secret_market_items)
+
+	local secret_market_ammo_items = market_items.get_secret_ammo_items()
+	secret_market_ammo_items = shuffle(secret_market_ammo_items)
 	
 	local surface = game.surfaces[1]										
 	local market = surface.create_entity {name = "market", position = pos}
@@ -452,6 +464,10 @@ local function secret_shop(pos)
 	market.add_market_item({price = {}, offer = {type = 'nothing', effect_description = 'Deposit Fish'}})
 	market.add_market_item({price = {}, offer = {type = 'nothing', effect_description = 'Withdraw Fish - 2% Bank Fee'}})
 	market.add_market_item({price = {}, offer = {type = 'nothing', effect_description = 'Show Account Balance'}})	
+
+	for i = 1, math.random(2,4), 1 do
+		market.add_market_item(secret_market_ammo_items[i])
+	end
 	
 	for i = 1, math.random(8,12), 1 do
 		market.add_market_item(secret_market_items[i])
