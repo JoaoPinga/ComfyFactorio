@@ -895,7 +895,8 @@ Darkness is a hazard in the mines, stay near your lamps..
 		global.worm_free_zone_radius = math.sqrt(global.spawn_dome_size) + 40
 		
 		global.biter_spawn_schedule = {}										
-		
+		global.player_hunger_schedule = {}
+
 		global.ore_spill_cap = 35
 		global.stats_rocks_broken = 0
 		global.stats_ores_found = 0
@@ -1116,6 +1117,11 @@ local function on_tick(event)
 		darkness_checks()	
 		darkness_events()
 		heal_rocks()
+
+		for k, player in pairs(global.player_hunger_schedule) do
+			hunger_update(player, -1)
+			global.player_hunger_schedule[k] = nil
+		end
 	end		
 	
 	if game.tick % 5400 == 2700 then
@@ -1181,7 +1187,10 @@ local function pre_player_mined_item(event)
 		
 		local tile_distance_to_center = math.sqrt(rock_position.x^2 + rock_position.y^2)
 				
-		if math.random(1,3) == 1 then hunger_update(player, -1) end
+		-- if math.random(1,3) == 1 then hunger_update(player, -1) end
+		if math.random(1,3) == 1 then
+			global.player_hunger_schedule[player.name] = player
+		end
 		
 		surface.spill_item_stack(player.position,{name = "raw-fish", count = math.random(3,4)},true)
 		local bonus_amount = math.ceil((tile_distance_to_center - math.sqrt(global.spawn_dome_size)) * 0.10, 0) 
